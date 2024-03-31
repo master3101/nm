@@ -1,0 +1,22 @@
+
+SIMPSONS 3/8
+
+def f(eq,x):
+    eq = eq.replace("x",str(x))
+    return float(eval(eq))
+def sim(lower,upper,iteration,eq):
+    h = (float(upper - lower)/iteration)
+    sum = f(eq,upper) + f(eq,lower)
+    for i in range(1,iteration):
+        x = lower + i * h
+        if(i % 3 == 0):
+            sum +=2 * f(eq,x)
+        else:
+            sum += 3* f(eq,x)
+    return ((float (3*h) / 8) * sum)
+eq=input("enter a equation")
+u= float(input("Enter a upper limit:"))
+l= float(input("Enter a lower limit:"))
+n= int(input("how many iteration are required:"))
+result= sim(l,u,n,eq)
+print(result)
